@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Mail, Github, Linkedin, Send, Rocket, Satellite, Wifi } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
 
 export function Contato() {
   const [formData, setFormData] = useState({
@@ -11,26 +13,40 @@ export function Contato() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulação de envio
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  try {
+    await emailjs.send(
+      'service_s9dp6fn',
+      'template_xbyepcr',
+      {
+        nome: formData.nome,
+        email: formData.email,
+        mensagem: formData.mensagem,
+      },
+      'nAy-Z4TtOMwbHRY6k'
+    );
 
-    setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ nome: '', email: '', mensagem: '' });
-
-    // Reset do status após 5 segundos
+  } catch (error) {
+    alert('Erro ao enviar mensagem. Tente novamente.');
+    console.error(error);
+  } finally {
+    setIsSubmitting(false);
     setTimeout(() => setIsSubmitted(false), 5000);
-  };
+  }
+};
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  });
+};
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <section
