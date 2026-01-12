@@ -1,11 +1,32 @@
 
 export function Projeto() {
   const projetos = [
-    "Projeto 1",
-    "Projeto 2",
-    "Projeto 3",
-    "Projeto 4",
+    {
+      nome: "WendelDog's",
+      descricao: "Projeto em React + javascript focado em lógica e moblie.",
+      github: "https://github.com/CarlosWendel/WendelDog-s",
+      status: "Deploy em breve",
+    },
+    {
+      nome: "DT Money",
+      descricao: "Projeto pessoal com React, Tailwind e typeScipt com cosumo de API.",
+      github: "https://github.com/CarlosWendel/DT-Money",
+      status: "Deploy em breve",
+    },
+     {
+      nome: "Barbearia Java",
+      descricao: "Projeto acadêmico de sistema para barbearia utilizando Java.",
+      github: "https://github.com/CarlosWendel/Barbearia_java",
+      status: "Deploy em breve",
+    },
+   {
+      nome: "Ignite Timer",
+      descricao: "Projeto em React + TypeScript focado em produtividade.",
+      github: "https://github.com/CarlosWendel/Ignite-Timer",
+      status: "Deploy em breve",
+    },
   ]
+
 
   return (
     <div id='project' className="min-h-screen px-10 text-amber-50">
@@ -18,35 +39,33 @@ export function Projeto() {
 
 
       <div className="grid grid-cols-2 gap-6">
-        {projetos.map((nome, index) => (
+        {projetos.map((projeto, index) => (
           <div
             key={index}
             className="relative group bg-zinc-900 p-6 rounded-xl border border-zinc-700 overflow-hidden"
           >
-            {/* Brilho do sol */}
-            <div className="
-            absolute inset-0 
-            opacity-0 
-            group-hover:opacity-100 
-            transition
-          ">
-              <div className="
-              absolute -top-10 -right-10 
-              w-40 h-40 
-              bg-yellow-400 
-              rounded-full 
-              blur-3xl 
-              opacity-40
-            " />
-            </div>
+            
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-yellow-400 rounded-full blur-3xl opacity-0 group-hover:opacity-40 transition" />
 
             <h3 className="text-lg font-semibold text-white">
-              {nome}
+              {projeto.nome}
             </h3>
 
             <p className="text-sm text-zinc-400 mt-2">
-              Em breve 🚀
+              {projeto.descricao}
             </p>
+
+            <a
+              href={projeto.github}
+              target="_blank"
+              className="inline-block mt-4 text-yellow-400 hover:underline"
+            >
+              Ver no GitHub →
+            </a>
+
+            <span className="block mt-2 text-xs text-zinc-500">
+              {projeto.status}
+            </span>
           </div>
         ))}
       </div>

@@ -5,6 +5,7 @@ import avatar from '../../assets/Cartoon.png';
 import { About } from "../about/About";
 import { Projeto } from "../projetos/Projeto";
 import { ContadorPalavras } from "../../components/wordCounter/ContadorPalavras";
+import { Contato } from "../contato/Contato";
 
 
 
@@ -56,8 +57,8 @@ export function Home() {
         <Projeto/>
         <ContadorPalavras/>
       </Sections>
-      <Sections id='contact' title="Contato">
-        Contato content
+      <Sections id='contact' title="">
+       <Contato/>
       </Sections>
 
     </div>
