@@ -13,72 +13,75 @@ export function Contato() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    await emailjs.send(
-      'service_s9dp6fn',
-      'template_xbyepcr',
-      {
-        nome: formData.nome,
-        email: formData.email,
-        mensagem: formData.mensagem,
-      },
-      'nAy-Z4TtOMwbHRY6k'
-    );
+    try {
+      await emailjs.send(
+        'service_s9dp6fn',
+        'template_xbyepcr',
+        {
+          nome: formData.nome,
+          email: formData.email,
+          mensagem: formData.mensagem,
+        },
+        'nAy-Z4TtOMwbHRY6k'
+      );
 
-    setIsSubmitted(true);
-    setFormData({ nome: '', email: '', mensagem: '' });
-  } catch (error) {
-    alert('Erro ao enviar mensagem. Tente novamente.');
-    console.error(error);
-  } finally {
-    setIsSubmitting(false);
-    setTimeout(() => setIsSubmitted(false), 5000);
-  }
-};
-const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value
-  });
-};
+      setIsSubmitted(true);
+      setFormData({ nome: '', email: '', mensagem: '' });
+    } catch (error) {
+      alert('Erro ao enviar mensagem. Tente novamente.');
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }
+  };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
 
   return (
-    <section
-      id="contato"
-      className="
-        relative min-h-screen
-        px-6 md:px-12 lg:px-24 py-24  
-        bg-black
-        text-white
-        overflow-hidden
-      "
-    >
+   <section
+    id="contato"
+    className="
+      relative
+      min-h-[100svh]
+      px-6 md:px-12 lg:px-24
+      py-16 md:py-24
+      bg-black
+      text-white
+      overflow-visible
+    "
+  >
+
       {/* Overlay de gradiente espacial */}
-        <div
-          className="
-            absolute inset-0
-            bg-lienar-to-b
-            from-zinc-900/70
-            via-black
-            to-zinc-950
-            pointer-events-none
-          "
-        />
+      <div
+        className="
+          absolute inset-0
+          bg-linear-to-b
+          from-zinc-900/70
+          via-black
+          to-zinc-950
+          pointer-events-none
+        "
+      />
 
-
-      {/* Elementos de fundo futuristas */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-cyan-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
+      {/* Elementos de fundo */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-yellow-400 rounded-full animate-ping" />
       </div>
+
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Cabeçalho com tema espacial */}
@@ -135,10 +138,10 @@ const handleChange = (
                   </div>
                 </a>
 
-               <a
-                href="mailto:wendelsilva0910@gmail.com?subject=Contato pelo Portfólio&body=Olá Wendel,%0D%0AVi seu portfólio e gostaria de conversar."
-                className="group flex items-center gap-4 p-4 rounded-xl bg-gray-900/50 hover:bg-gray-800/50 border border-gray-800 hover:border-yellow-400/50 transition-all duration-300"
-              >
+                <a
+                  href="mailto:wendelsilva0910@gmail.com?subject=Contato pelo Portfólio&body=Olá Wendel,%0D%0AVi seu portfólio e gostaria de conversar."
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-gray-900/50 hover:bg-gray-800/50 border border-gray-800 hover:border-yellow-400/50 transition-all duration-300"
+                >
 
                   <div className="p-3 rounded-lg bg-gray-800 group-hover:bg-black">
                     <Mail className="w-6 h-6 group-hover:text-yellow-400 transition-colors" />
@@ -207,7 +210,7 @@ const handleChange = (
 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Seu Email / Frequência
+                    Seu Email
                   </label>
                   <input
                     type="email"
