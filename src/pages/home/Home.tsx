@@ -13,14 +13,23 @@ import { Contato } from "../contato/Contato";
 
 export function Home() {
   return (
-    <div className="relative min-h-screen text-white">
+    <div className="relative min-h-[100svh] text-white overflow-x-hidden">
       <ParticlesBackground />
       <Header />
 
       <main
         id="home"
-        className="relative z-10 max-w-6xl mx-auto min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6"
+        className="
+          relative z-10
+          max-w-6xl mx-auto
+          flex flex-col-reverse md:flex-row
+          items-center justify-center
+          gap-12 px-6
+          pt-24 md:pt-28
+          min-h-[100svh]
+        "
       >
+
         {/* TEXTO */}
         <div className="text-center md:text-left max-w-xl">
           <h1 className="text-4xl md:text-5xl font-bold">
@@ -44,19 +53,27 @@ export function Home() {
           <img
             src={avatar}
             alt="Avatar Carlos Wendel"
-            className="w-48 h-48 md:w-64 md:h-66 rounded-full border-4 border-indigo-500 shadow-lg"
+            className="
+              w-48 h-48
+              md:w-68 md:h-70
+              rounded-full
+              border-4 border-indigo-500
+              shadow-lg
+              object-cover
+            "
           />
         </div>
+
       </main>
 
       <Sections id='about' title="">
         <About />
       </Sections>
       <Sections id='projects' title="" >
-        <Projeto/>
+        <Projeto />
       </Sections>
       <Sections id='contact' title="">
-       <Contato/>
+        <Contato />
       </Sections>
 
     </div>

@@ -1,6 +1,6 @@
 interface SectionProps {
   id: "about" | "projects" | "contact";
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 
@@ -12,7 +12,7 @@ export function Sections({ id, title, children }: SectionProps) {
       id={id}
       className={`
         px-6 md:px-10
-        ${isLastSection ? "pt-20 pb-0" : "py-20"}
+        ${isLastSection ? "pt-20 pb-8 md:pb-12" : "py-20"}
       `}
     >
       {title && (
