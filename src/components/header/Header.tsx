@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import imgLogo from "../../assets/logo1.png";
+import DawnloadCV from "./DawnloadCV";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +12,13 @@ export function Header() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "Sobre mim" },
+    { href: "#projects", label: "Projetos" },
+    { href: "#contato", label: "Contato" },
+  ];
 
   return (
     <header
@@ -34,11 +42,17 @@ export function Header() {
         </a>
 
         {/* Menu desktop */}
-        <nav className="hidden items-end md:flex gap-8 text-white ml-auto ">
-          <a href="#home" className="hover:text-violet-400">Home</a>
-          <a href="#about" className="hover:text-violet-400">Sobre mim</a>
-          <a href="#projects" className="hover:text-violet-400">Projetos</a>
-          <a href="#contato" className="hover:text-violet-400">Contato</a>
+        <nav className="hidden md:flex items-center gap-8 text-white ml-auto ">
+          {navLinks.map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="hover:text-violet-400"
+            >
+              {label}
+            </a>
+          ))}
+          <DawnloadCV />
         </nav>
 
         {/* Botão mobile */}
@@ -69,10 +83,22 @@ export function Header() {
               items-end
             "
           >
-            <a onClick={() => setMenuOpen(false)} href="#home">Home</a>
-            <a onClick={() => setMenuOpen(false)} href="#about">Sobre mim</a>
-            <a onClick={() => setMenuOpen(false)} href="#projects">Projetos</a>
-            <a onClick={() => setMenuOpen(false)} href="#contato">Contato</a>
+            
+              {navLinks.map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="hover:text-violet-400"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+              <div onClick={()=> setMenuOpen(false)}>
+                <DawnloadCV />
+              </div>
+            
+            
           </nav>
         )}
       </div>
