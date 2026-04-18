@@ -6,7 +6,7 @@ O objetivo do projeto é reunir meus principais trabalhos e demonstrar minhas ha
 
 ## 🌐 Acesse o projeto
 
-🔗 https://portif-lio-wendel.vercel.app/
+🔗 https://carloswendel.vercel.app/
 
 ## 🛠 Tecnologias utilizadas
 
